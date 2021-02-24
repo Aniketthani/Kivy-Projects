@@ -1,0 +1,98 @@
+<ColorButton@RadioButton>
+    group:"color"
+    on_release:app.root.set_color(self.background_color)
+    border:(3,3,3,3)
+<LineWidthButton@RadioButton>
+    group:"line_width"
+    on_release:app.root.set_line_width(self.text)
+    background_color:(168/255, 150/255, 146/255,1)
+    Color:
+        rgba:(0,0,0,1)
+<MyCanvas>
+    Button:
+        text:"Clear Screen"
+        height:50
+        width:100
+        right:root.right
+        top:root.top
+        on_release: root.clear_screen()
+    
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 2
+        spacing: 2
+        x: 0
+        top: root.top
+        width: 80
+        height: 110
+        RadioButton:
+            text:"Thick"
+            group:"line_width"
+            on_release:app.root.set_line_width(self.text)
+            background_color:(168/255, 150/255, 146/255,0.7)
+        RadioButton:
+            text:"Normal"
+            group:"line_width"
+            on_release:app.root.set_line_width(self.text)
+            background_color:(168/255, 150/255, 146/255,0.7)
+        RadioButton:
+            text:"Thin"
+            group:"line_width"
+            on_release:app.root.set_line_width(self.text)
+            background_color:(168/255, 150/255, 146/255,0.7)
+
+    BoxLayout:
+        orientation: 'horizontal'
+        x:0
+        y:0
+        width:root.width
+        height:40
+        padding:3
+        spacing:3
+
+        ColorButton:
+            
+            background_color:(0,0,0,1)
+            state:"down"
+
+
+        ColorButton:
+            
+            background_color:(1,0,0,1)
+            
+            
+        ColorButton:
+            
+            background_color:(0,1,0,1)
+            
+        ColorButton:
+            background_color:(0,0,1,1)
+
+        ColorButton:
+            
+            background_color:(229/255,0,138/255,1)
+
+        ColorButton:
+            
+            background_color:(1,21/255,89/255,1)
+        
+        ColorButton:
+            
+            background_color:(43/255,21/255,89/255,1)
+        
+        ColorButton:
+            
+            background_color:(73/255, 103/255, 133/255, 1)
+        
+        ColorButton:
+            
+            background_color:(102/255,176/255,174/255,1)
+
+        ColorButton:
+            
+            background_color:(102/255,147/255,1,1)
+
+        ColorButton:
+            
+            background_color:(1,166/255,96/255,1)
