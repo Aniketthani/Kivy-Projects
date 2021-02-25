@@ -1,0 +1,42 @@
+<Button>
+    background_normal:"images/white.png"
+    background_down:"images/black.jpeg"
+    font_size: 40
+    halign:'center'
+    markup:True
+    
+<MyWidget>
+    cols:2
+    spacing:10
+    padding:7
+    
+    row_default_height:0.5*(self.width-self.spacing[0])-self.padding[0]
+    row_force_default:True
+    Button:
+        text:('[font=modernpics][size=120]e[/size][/font]\nNew recording')
+        background_color:(1, 0, 0,1)
+        id:begin_end_recording_btn
+        on_press:root.begin_end_recording()
+        
+    GridLayout:
+        cols:2
+        Button:
+            text:"[font=modernpics][size=120]M[/size][/font]"
+            background_color:(0, 170/255, 1,1)
+        Button:
+            text:"[font=modernpics][size=120]O[/size][/font]"
+            background_color:(1, 0, 98/255,1)
+        Button:
+            text:"[font=modernpics][size=120]Q[/size][/font]"
+            background_color:(0,1, 195/255,1)
+        Button:
+            text:"[font=modernpics][size=120]j[/size][/font]"
+            background_color:(8/255, 0, 1,1)
+    Button:
+        text:"[font=modernpics][size=120]P[/size][/font]PlayBack"
+        background_color:(0, 0.7, 0.7,1)
+        on_press:root.playback()
+    Button:
+        text:"[font=modernpics][size=120]x[/size][/font]Delete"
+        background_color:(0.5, 0, 0.7,1)
+        on_press:root.delete_file()
