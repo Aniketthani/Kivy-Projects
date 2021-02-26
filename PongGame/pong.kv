@@ -1,0 +1,58 @@
+<PongPaddle>
+    
+    canvas:
+        Color:
+            rgba:(0, 0, 1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+<PongBall>
+    
+    canvas:
+        Color:
+            rgba:(1, 0, 0.2,1)
+        Ellipse:
+            pos:self.pos
+            size:self.size
+
+
+
+<PongGame>
+    ball:pong_ball
+    paddle1:paddleone
+    paddle2:paddletwo
+    canvas:
+        Color:
+            rgba:(1, 0.8, 0,1)
+        Rectangle:
+            pos:self.center_x-(self.width/80),0
+            size:self.width/40,self.height
+
+    Label:
+        
+        text:str(root.paddle1.score)
+        font_size: root.width//10
+        center_x:root.width/4
+        top:root.top-50
+    Label:
+       
+        text:str(root.paddle2.score)
+        font_size: root.width//10
+        center_x:3*root.width/4
+        top:root.top-50
+    
+    PongBall:
+
+        id:pong_ball
+        size:root.width//20,root.width//20
+        center:(root.width/2 - 100,200)
+    
+    PongPaddle:
+        id:paddleone
+        size:3*root.width/60,6*root.height/10
+        pos:0,2*root.height/10
+    PongPaddle:
+        id:paddletwo
+        size:3*root.width/60,6*root.height/10
+        pos:root.width-3*root.width/60,2*root.height/10
