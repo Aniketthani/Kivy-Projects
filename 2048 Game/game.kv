@@ -1,0 +1,48 @@
+#: set padding  100
+
+BoxLayout:
+    orientation:"vertical"
+    spacing:20
+    Label:
+        size_hint:(1,0.5)
+        canvas.before:
+            Color:
+                rgba:(0.9, 0.7, 0.2,1)
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        text:"2048 Game By Aniket Thani"
+        
+        
+        color:(0,0,1,1)
+        bold:True
+        font_size:min(root.width,root.height)//14
+
+    Board:
+        id: board
+        size: [min(root.width, root.height)-2*padding]*2
+        size_hint: (None,None)
+        pos_hint:{'center_x':0.5, 'center_y': 0.5}
+        
+
+    BoxLayout:
+        id:message_box
+        orientation: 'horizontal'
+        
+        
+<Tile>
+    canvas:
+        Color: 
+            rgb:self.color
+        BorderImage:
+            pos:self.pos
+            size:self.size
+            source:"images/cell.png"
+    Label:
+        pos:root.pos
+        size:root.size
+        bold:True
+        color:root.number_color
+        font_size: root.font_size
+        text:str(root.number)
+    
