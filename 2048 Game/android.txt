@@ -1,0 +1,3 @@
+title=Aniket 2048 Game
+author=aniket
+orientation=portrait
