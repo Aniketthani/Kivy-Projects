@@ -1,0 +1,100 @@
+<Pipe>:
+    
+    canvas:
+        Rectangle:
+            pos:(self.pos[0] + (64-48)/2,self.FLOOR)
+            size:(48,self.lower_len)
+            texture:self.tx_pipe
+            tex_coords:self.lower_coords
+        Rectangle:
+            pos:(self.pos[0],self.FLOOR + self.lower_len)
+            size:(64,self.PCAP_HEIGHT)
+            texture:self.tx_pcap
+
+        Rectangle:
+            pos:(self.pos[0],self.FLOOR + self.lower_len + self.PCAP_HEIGHT +self.PIPE_GAP)
+            size:(64,self.PCAP_HEIGHT)
+            texture:self.tx_pcap
+        Rectangle:
+            pos:(self.pos[0]+ (64-48)/2,self.FLOOR + self.lower_len + self.PCAP_HEIGHT +self.PIPE_GAP + self.PCAP_HEIGHT)
+            size:(48,self.upper_len)
+            texture:self.tx_pipe
+            tex_coords:self.upper_coords
+    
+    
+    
+    
+
+
+FloatLayout:
+    Background:
+        id:background
+        canvas.before:
+            Rectangle:
+                pos:self.pos
+                size:self.size
+                source:"images/sky.png"
+                
+        canvas:
+            Rectangle:
+                pos:self.pos
+                size:self.width,96
+                texture:self.tx_floor
+            Rectangle:
+                pos:self.pos[0],self.pos[1]+96
+                size:self.width,64
+                texture:self.tx_grass
+            Rectangle:
+                pos:self.pos[0],self.height-148
+                size:self.width,138
+                texture:self.tx_cloud
+    Label:
+        color:(1,0,0,1)
+        text:"Kivy Bird By Aniket Thani"
+        font_size:18
+        bold:True
+        size_hint:(None,None)
+        size:(300,100)
+        pos_hint:{'x':0,'y':0}
+        
+
+    Bird:
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle:self.angle
+                axis:(0,0,1)
+                origin:self.center
+        canvas.after:
+            PopMatrix
+
+        id:bird
+        pos_hint: {'center_x':0.3333,'center_y':0.6 }
+        size:(54,54)
+        size_hint:(None,None)
+        source:'images/bird.png'
+
+    Label:
+        id:score
+        text:"0"
+        font_size: 86
+        color:(0,0,0,1)
+        size_hint:(0.3,None)
+        pos_hint:{'x':0.38}
+        height:96
+
+    Label:
+        id:start_or_over_label
+        text:"Tap to start"
+        font_size:40
+        color:(0,0,0,0.7)
+    Label:
+        id:highscore
+        text:""
+        size_hint:(0.4,None)
+        height:200
+        font_size:25
+        pos_hint:{'x':0.5,'y':0.7}
+        color:(0,0,0,0.8)
+        bold:True
+
