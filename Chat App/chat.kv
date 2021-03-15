@@ -1,0 +1,85 @@
+#:import C kivy.utils.get_color_from_hex
+#: import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+<BoxLayout>:
+    padding:10
+    spacing:10
+<Label>:
+    font_size: 30
+<GridLayout>:
+    rows:2
+    cols:2
+    spacing:10
+    row_default_height:90
+    row_force_default:True
+<Button>:
+    font_size: 30
+    height:90
+    size_hint: (1,None)
+    border:(2,2,2,2)
+<TextInput>:
+    font_size: 45
+    multiline:False
+    padding:[10,0.5*(self.height - self.line_height)]
+<ChatLabel@Label>:
+    color:C('#101010')
+    text_size:(self.width,None)
+    halign:'left'
+    valign:'top'
+    padding:(10,0)
+    size_hint: (1,None)
+    height:self.texture_size[1]
+    markup:True 
+<ScrollView>:
+    canvas.before:
+        Color:
+            rgb:1,1,1
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+ScreenManager:
+    transition:RiseInTransition()
+    Screen:
+        name:'login'
+        BoxLayout:
+            orientation:'vertical'
+            GridLayout:
+                Label:
+                    text:'Server'
+                    size_hint: (0.4,1)
+                TextInput:
+                    id:server
+                    text:'127.0.0.1'
+                Label:
+                    text:'Username' 
+                    size_hint: (0.4,1)
+                TextInput:
+                    id:username
+                    text:'Krishna'
+            Button:
+                text:'Connect'
+                on_press: app.connect()
+    Screen:
+        name:'chatroom'
+        BoxLayout:
+            orientation:'vertical'
+            Button:
+                text:'Disconnect'
+                on_press: app.disconnect()
+            ScrollView:
+                ChatLabel:
+                    id:chat_logs
+                    text:''
+            BoxLayout:
+                height:90
+                orientation:'horizontal'
+                padding:0
+                size_hint: (1,None)
+
+                TextInput:  
+                    id:message
+                    on_text_validate: app.send_msg()
+                Button:
+                    text:'Send'
+                    on_press:app.send_msg()
+                    size_hint:(0.3,1) 
